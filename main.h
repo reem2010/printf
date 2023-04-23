@@ -18,4 +18,5 @@ int istring(char, va_list v);
 int fun(char, char *);
 int _putchar(char c);
 int print_int(char c, va_list v);
+int binary(char c, va_list v);
 #endif
