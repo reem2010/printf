@@ -15,13 +15,13 @@ int istring(char c, va_list v)
 	int length = 0;
 	int x = 0;
 	char *s;
-	char f;
+	char n;
 
 
 	if (c == '%')
 	{
-		f = '%';
-		x = write(1, &f, 1);
+		n = '%';
+		x = write(1, &n, 1);
 		return (x);
 	}
 	if (c == 's')
@@ -36,11 +36,17 @@ int istring(char c, va_list v)
 			}
 			x = write(1, s, length);
 		}
+		else
+		{
+			s = "(null)";
+			x = write(1, s, 6);
+		}
 	}
 	else
 	{
-		f = va_arg(v, int);
-		x = write(1, &f, 1);
+		n = va_arg(v, int);
+		x = write(1, &n, 1);
+
 	}
 
 	return (x);

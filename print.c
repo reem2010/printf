@@ -41,10 +41,10 @@ int _printf(const char *format, ...)
 	{
 		if (format[i] == '%')
 		{
+			i++;
 			j = 0;
 			while (j < 1)
 			{
-				i++;
 				if ((format[i]) && fun(format[i], sp[j].c))
 				{
 					x = sp[j].p(format[i], data);
@@ -61,6 +61,8 @@ int _printf(const char *format, ...)
 		sum = sum + x;
 	}
 	va_end(data);
+	if (format == NULL)
+		sum = -1;
 	return (sum);
 }
 
