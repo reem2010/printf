@@ -31,7 +31,7 @@ int print_int(char c, va_list v)
 	}
 	if (n < 10)
 	{
-		return (_putchar(n + '0'));
+		return(_putchar(n + '0'));
 		x++;
 	}
 	if (n != 0)

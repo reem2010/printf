@@ -31,7 +31,7 @@ int fun(char c, char *s)
 int _printf(const char *format, ...)
 {
 	spec sp[] = {
-		{"sc%", 1, istring}
+		{"sc%", 1, istring}, {"di", 1, print_int}
 	};
 	int i = 0, sum = 0, j = 0, x = 0;
 	va_list data;
@@ -46,7 +46,7 @@ int _printf(const char *format, ...)
 			if (!format[i])
 				return (-1);
 			j = 0;
-			while (j < 1)
+			while (j < 2)
 			{
 				if ((format[i]) && fun(format[i], sp[j].c))
 				{
