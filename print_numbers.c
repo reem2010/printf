@@ -30,7 +30,7 @@ int print_int(char c, va_list v)
 	}
 	if (n < 10)
 	{
-		return (_putchar(n + '0'));
+		return (i = i + _putchar(n + '0'));
 		i++;
 	}
 	if (n != 0)
@@ -40,12 +40,14 @@ int print_int(char c, va_list v)
 		{
 			decimal *= 10;
 			num /= 10;
+			i++;
 		}
 		while (decimal >= 1)
 		{
-			 _putchar(((n / decimal) % 10) + '0');
+			_putchar(((n / decimal) % 10) + '0');
 			decimal /= 10;
 		}
+		i++;
 	}
 	return (i);
 }
