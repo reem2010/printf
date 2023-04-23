@@ -12,7 +12,7 @@
 int fun(char c, char *s)
 {
 	int i = 0;
-
+	
 	while ((s)[i])
 	{
 		if (s[i] == c)
@@ -39,9 +39,14 @@ int _printf(const char *format, ...)
 	va_start(data, format);
 	while ((format != NULL) && format[i])
 	{
+		x = 0;
 		if (format[i] == '%')
 		{
 			i++;
+			if (!format[i])
+				return (-1);
+			else if (!(format[i + 1]) && (format[i] == ' '))
+				return (-1);
 			j = 0;
 			while (j < 1)
 			{
@@ -52,6 +57,8 @@ int _printf(const char *format, ...)
 				}
 				j++;
 			}
+			if (x == 0)
+				x = write(1, &format[i - 1], 1);
 		}
 		else
 		{
