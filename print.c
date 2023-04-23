@@ -61,7 +61,6 @@ int _printf(const char *format, ...)
 		sum = sum + x;
 	}
 	va_end(data);
-	printf("%d", sum);
 	return (sum);
 }
 
