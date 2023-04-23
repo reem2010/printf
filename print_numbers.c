@@ -16,7 +16,6 @@ int print_int(char c, va_list v)
 	int i = 0;
 	int n;
 	int decimal = 1;
-	int x = 0;
 	int num;
 	(void)c;
 
@@ -25,14 +24,14 @@ int print_int(char c, va_list v)
 
 	if (n < 0)
 	{
-		num = n * -1;
+		n = n * -1;
 		_putchar('-');
-		 x++;
+		i++;
 	}
 	if (n < 10)
 	{
-		return(_putchar(n + '0'));
-		x++;
+		return (_putchar(n + '0'));
+		i++;
 	}
 	if (n != 0)
 	{
@@ -44,7 +43,7 @@ int print_int(char c, va_list v)
 		}
 		while (decimal >= 1)
 		{
-			x = x + _putchar(((num / decimal) % 10) + '0');
+			 _putchar(((n / decimal) % 10) + '0');
 			decimal /= 10;
 		}
 	}
