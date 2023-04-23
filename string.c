@@ -18,6 +18,12 @@ int istring(char c, va_list v)
 	char f;
 
 
+	if (c == '%')
+	{
+		f = '%';
+		x = write(1, &f, 1);
+		return (x);
+	}
 	if (c == 's')
 	{
 		s = va_arg(v, char*);

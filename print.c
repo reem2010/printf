@@ -31,7 +31,7 @@ int fun(char c, char *s)
 int _printf(const char *format, ...)
 {
 	spec sp[] = {
-		{"sc", 1, istring}
+		{"sc%", 1, istring}
 	};
 	int i = 0, sum = 0, j = 0, x = 0;
 	va_list data;
@@ -45,7 +45,7 @@ int _printf(const char *format, ...)
 			while (j < 1)
 			{
 				i++;
-				if (fun(format[i], sp[j].c))
+				if ((format[i]) && fun(format[i], sp[j].c))
 				{
 					x = sp[j].p(format[i], data);
 					i++;
@@ -53,11 +53,15 @@ int _printf(const char *format, ...)
 				j++;
 			}
 		}
-		x = write(1, &format[i], 1);
-		i++;
+		else
+		{
+			x = write(1, &format[i], 1);
+			i++;
+		}
 		sum = sum + x;
 	}
 	va_end(data);
+	printf("%d", sum);
 	return (sum);
 }
 
