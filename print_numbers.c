@@ -13,43 +13,40 @@
 
 int print_int(char c, va_list v)
 {
-	  int i = 0;
-	  int n;
-	  int decimal = 1;
-	  int x;
-	  int num;
-	 
-	n= va_arg(v, int);
+	int i = 0;
+	int n;
+	int decimal = 1;
+	int x = 0;
+	int num;
+	(void)c;
 
-	printf("%s", "sara");
-	printf("%d", n);
-	printf("%c", c);
 
-	  if (n < 0)
-	 {
-	 	n = n * -1;
-	 	_putchar('-');
-	 	i++;
-	 }
-	 if (n < 10)
-	 {
-	 	return (_putchar(n + '0'));
-	 }
-	 if (n > 0)
-	 {
-	 	while (n / 10 != '0')
-	 	{
-	 		decimal = decimal * 10;
-	 		x = x / 10;
-	 	}
-	 	while (decimal >= 1)
-	 	{
-	 	 	num = n / decimal;
-	 		_putchar((num % 10) + '0');
-	 		decimal = decimal / 10;
-	 		i++;
-	 	}
-	 }
-	 /
-	return (0);
+	n = va_arg(v, int);
+
+	if (n < 0)
+	{
+		num = n * -1;
+		_putchar('-');
+		 x++;
+	}
+	if (n < 10)
+	{
+		return (_putchar(n + '0'));
+		x++;
+	}
+	if (n != 0)
+	{
+		num = n;
+		while (num > 9)
+		{
+			decimal *= 10;
+			num /= 10;
+		}
+		while (decimal >= 1)
+		{
+			x = x + _putchar(((num / decimal) % 10) + '0');
+			decimal /= 10;
+		}
+	}
+	return (i);
 }
