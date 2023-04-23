@@ -16,4 +16,6 @@ typedef struct specifiers
 int _printf(const char *format, ...);
 int istring(char, va_list v);
 int fun(char, char *);
+int _putchar(char c);
+int print_int(char c, va_list v);
 #endif
