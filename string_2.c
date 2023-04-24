@@ -9,14 +9,11 @@
  */
 void hexa(char c)
 {
-	int i, n, a, temp, size = 0;
+	int i, n = 1, a, temp, size = 0;
 	char s[2];
 
 	i = (int)c;
-	n = 1;
-	a = i;
 	temp = i;
-
 	while (temp)
 	{
 		size++;
@@ -25,26 +22,28 @@ void hexa(char c)
 	if (size == 1)
 	{
 		_putchar('0');
-		i = a % 16;
-		if (i >= 10 && i < 16)
+		a = i % 16;
+		if (a >= 10 && a < 16)
 		{
-			i = i % 10;
-			_putchar('A' + i);
+			a = a % 10;
+			_putchar('A' + a);
 		}
+		else
+			_putchar('0' + a);
 	}
 	else
 	{
 		while (n >= 0)
 		{
-			i = a % 16;
-			if (i >= 10 && i < 16)
+			a = i % 16;
+			if (a >= 10 && a < 16)
 			{
-				i = i % 10;
-				s[n] = ('a' + i);
+				a = a % 10;
+				s[n] = ('A' + a);
 			}
 			else
-				s[n] = ('a' + i);
-			a = a / 16;
+				s[n] = ('0' + a);
+			i = i / 16;
 			n--;
 		}
 		write(1, s, 2);
