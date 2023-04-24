@@ -12,11 +12,13 @@
 int fun(va_list v, char c)
 {
 	spec sp[] = {
-		{"sc%", 1, istring}, {"di", 1, print_int}, {"b", 1, binary}
+		{"sc%", 1, istring}, {"di", 1, print_int}, {"b", 1, binary},
+		{"u", 1, print_unsign}, {"o", 1, print_oct},
+		{"xX", 1, print_hexa}
 	};
 	int i = 0, j = 0, x = -1;
 
-	while ((j < 3) && c)
+	while ((j < 6) && c)
 	{
 		i = 0;
 		while ((sp[j].c)[i])
