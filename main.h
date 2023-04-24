@@ -15,7 +15,7 @@ typedef struct specifiers
 } spec;
 int _printf(const char *format, ...);
 int istring(char, va_list v);
-int fun(char, char *);
+int fun(va_list, char);
 int _putchar(char c);
 int print_int(char c, va_list v);
 int binary(char c, va_list v);

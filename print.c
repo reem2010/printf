@@ -9,17 +9,25 @@
  * @s: string
  * Return: 1 if it is founded
  */
-int fun(char c, char *s)
+int fun(va_list v, char c)
 {
-	int i = 0;
+	spec sp[] = {
+		{"sc%", 1, istring}, {"di", 1, print_int}, {"b", 1, binary}
+	};
+	int i = 0, j = 0, x = -1;;
 
-	while ((s)[i])
+	while ((j < 3) && c)
 	{
-		if (s[i] == c)
-			return (1);
-		i++;
+		i = 0;
+		while ((sp[j].c)[i])
+		{
+			if ((sp[j].c)[i] == c)
+				x = sp[j].p(c, v);
+			i++;
+		}
+		j++;
 	}
-	return (0);
+	return (x);
 }
 
 
@@ -30,10 +38,7 @@ int fun(char c, char *s)
  */
 int _printf(const char *format, ...)
 {
-	spec sp[] = {
-		{"sc%", 1, istring}, {"di", 1, print_int}, {"b", 1, binary}
-	};
-	int i = 0, sum = 0, j = 0, x = 0;
+	int i = 0, sum = 0,x = 0;
 	va_list data;
 
 	va_start(data, format);
@@ -45,18 +50,11 @@ int _printf(const char *format, ...)
 			i++;
 			if (!format[i])
 				return (-1);
-			j = 0;
-			while (j < 3)
-			{
-				if ((format[i]) && fun(format[i], sp[j].c))
-				{
-					x = sp[j].p(format[i], data);
-					i++;
-				}
-				j++;
-			}
+			x = fun(data, format[i]);
 			if (x == -1)
 				x = write(1, &format[i - 1], 1);
+			else
+				i++;
 		}
 		else
 		{
