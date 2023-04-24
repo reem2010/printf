@@ -13,7 +13,7 @@ void hexa(char c)
 	char s[2];
 
 	i = (int)c;
-	n = 2;
+	n = 1;
 	a = i;
 	temp = i;
 

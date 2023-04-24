@@ -18,7 +18,7 @@ int fun(va_list v, char c)
 	};
 	int i = 0, j = 0, x = -1;
 
-	while ((j < 6) && c)
+	while ((j < 7) && c)
 	{
 		i = 0;
 		while ((sp[j].c)[i])
