@@ -106,14 +106,15 @@ int print_hexa(char c, va_list v)
 	n = va_arg(v, unsigned int);
 	if (n == 0)
 	{
-		c = '0';
-		i = write(1, &c, 1);
+		_putchar('0');
 		return (1);
 	}
 	num = n;
 	while (num)
+	{
 		i++;
 		num = num / 16;
+	}
 	s = malloc(i);
 	if (s == NULL)
 		return (0);
