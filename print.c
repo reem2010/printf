@@ -6,7 +6,7 @@
 /**
  * fun - get the function
  * @c: character to compare with
- * @s: string
+ * @v: argument
  * Return: 1 if it is founded
  */
 int fun(va_list v, char c)
@@ -14,7 +14,7 @@ int fun(va_list v, char c)
 	spec sp[] = {
 		{"sc%", 1, istring}, {"di", 1, print_int}, {"b", 1, binary}
 	};
-	int i = 0, j = 0, x = -1;;
+	int i = 0, j = 0, x = -1;
 
 	while ((j < 3) && c)
 	{
@@ -38,7 +38,7 @@ int fun(va_list v, char c)
  */
 int _printf(const char *format, ...)
 {
-	int i = 0, sum = 0,x = 0;
+	int i = 0, sum = 0, x = 0;
 	va_list data;
 
 	va_start(data, format);
