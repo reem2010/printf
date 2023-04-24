@@ -22,4 +22,6 @@ int binary(char c, va_list v);
 int print_oct(char c, va_list v);
 int print_unsign(char c, va_list v);
 int print_hexa(char c, va_list v);
+void hexa(char c);
+int print_string(char c, va_list v);
 #endif

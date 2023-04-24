@@ -13,7 +13,7 @@ int fun(va_list v, char c)
 {
 	spec sp[] = {
 		{"sc%", 1, istring}, {"di", 1, print_int}, {"b", 1, binary},
-		{"u", 1, print_unsign}, {"o", 1, print_oct},
+		{"u", 1, print_unsign}, {"o", 1, print_oct}, {"S", 1, print_string},
 		{"xX", 1, print_hexa}
 	};
 	int i = 0, j = 0, x = -1;
