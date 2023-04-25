@@ -24,4 +24,5 @@ int print_unsign(char c, va_list v);
 int print_hexa(char c, va_list v);
 void hexa(char c);
 int print_string(char c, va_list v);
+int print_P(char c, va_list v);
 #endif
