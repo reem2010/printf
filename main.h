@@ -29,4 +29,8 @@ int flag(const char *format, int i, va_list v);
 int space(const char *format, int i, va_list v);
 int hash(const char *format, int i, va_list v);
 int plus(const char *format, int i, va_list v);
+int print_l(const char *format, int i, va_list v);
+int print_Hexa(char c, va_list v);
+long int get_number(char c, va_list v);
+long int get_min(char c);
 #endif

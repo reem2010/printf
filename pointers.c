@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <stdarg.h>
+#include <stdio.h>
 /**
  * print_P - print pointer
  * @c: character
@@ -11,17 +12,10 @@
 
 int print_P(char c, va_list v)
 {
-	int x;
-	void *addr;
-	void *ptr;
+	void *ptr = va_arg(v, void *);
 	(void)c;
 
-	addr = va_arg(v, void *);
-
-	ptr = malloc((sizeof(addr)));
-
-	ptr = ((char *)addr);
-	x = write(1, &ptr, (sizeof(addr)));
+	ptr = malloc(1024);
 	free(ptr);
-	return (x);
+	return (0);
 }

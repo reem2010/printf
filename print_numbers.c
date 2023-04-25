@@ -6,6 +6,45 @@
 #include <limits.h>
 
 /**
+ * get_number - get
+ * @c: is a character
+ * @v: argument
+ * Return: number
+ */
+long int get_number(char c, va_list v)
+{
+	long int n;
+
+	if (c == 'l')
+		n = va_arg(v, long int);
+	else if (c == 'h')
+		n = (short int)va_arg(v, int);
+	else
+		n = va_arg(v, int);
+	return (n);
+}
+
+/**
+ * get_min - git
+ * @c: is a character
+ *
+ * Return: number
+ */
+long int get_min(char c)
+{
+	long int n;
+
+	if (c == 'l')
+		n = LONG_MIN;
+	else if (c == 'h')
+		n = -32768;
+	else
+		n = -2147483648;
+	return (n);
+}
+
+
+/**
  * print_int - print integer
  * @c: is a character
  * @v: argument
@@ -14,14 +53,15 @@
 
 int print_int(char c, va_list v)
 {
-	int i = 0, n, num, decimal = 1, a = 0;
+	long int i = 0, n, num, decimal = 1, a = 0, min;
 
-	n = va_arg(v, int);
+	min = get_min(c);
+	n = get_number(c, v);
 	if (n < 0)
 	{
 		_putchar('-');
 		i++;
-		if (n == INT_MIN)
+		if (n == min)
 		{
 			n = (n + 1) * -1;
 			a = 1;

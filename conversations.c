@@ -12,13 +12,16 @@
 
 int print_unsign(char c, va_list v)
 {
-	int i = 0;
-	unsigned int n;
-	int b;
-	unsigned int num;
+	int i = 0, b;
+	unsigned long int n, num;
 	char *s;
 
-	n = va_arg(v, unsigned int);
+	if (c == 'l')
+		n = va_arg(v, unsigned long int);
+	else if (c == 'h')
+		n = (unsigned short)va_arg(v, int);
+	else
+		n = va_arg(v, unsigned int);
 	if (n == 0)
 	{
 		c = '0';
@@ -56,18 +59,21 @@ int print_unsign(char c, va_list v)
  */
 int print_oct(char c, va_list v)
 {
-	int i = 0;
-	int a;
-	unsigned int n;
-	unsigned int num;
+	int i = 0, a;
+	unsigned long int n, num;
 	char *arr;
-	(void)c;
 
-	n = va_arg(v, unsigned int);
+	if (c == 'l')
+		n = va_arg(v, unsigned long int);
+	else if (c == 'h')
+		n = (unsigned short)va_arg(v, int);
+	else
+		n = va_arg(v, unsigned int);
 	if (n == 0)
 	{
-		_putchar('0');
-		return (1);
+		c = '0';
+		i = write(1, &c, 1);
+		return (i);
 	}
 	num = n;
 	while (num)
@@ -91,7 +97,7 @@ int print_oct(char c, va_list v)
 }
 
 /**
- * print_hexa - octal
+ * print_hexa - hexa
  * @c: character
  * @v: argument
  *
@@ -100,15 +106,17 @@ int print_oct(char c, va_list v)
 int print_hexa(char c, va_list v)
 {
 	int i = 0, b;
-	unsigned int n, a, num;
+	unsigned long int n, a, num;
 	char *s;
 
-	n = va_arg(v, unsigned int);
+	if (c == 'l')
+		n = va_arg(v, unsigned long int);
+	else if (c == 'h')
+		n = (unsigned short)va_arg(v, int);
+	else
+		n = va_arg(v, unsigned int);
 	if (n == 0)
-	{
-		_putchar('0');
-		return (1);
-	}
+		return (_putchar('0'));
 	num = n;
 	while (num)
 	{
@@ -125,10 +133,55 @@ int print_hexa(char c, va_list v)
 		if (a >= 10 && a < 16)
 		{
 			a = a % 10;
-			if (c == 'x')
-				s[b] = 'a' + a;
-			else
-				s[b] = 'A' + a;
+			s[b] = 'a' + a;
+		}
+		else
+			s[b] = '0' + (n % 16);
+		n = n / 16;
+		b--;
+	}
+	write(1, s, i);
+	free(s);
+	return (i);
+}
+/**
+ * print_Hexa - hexa
+ * @c: character
+ * @v: argument
+ *
+ * Return: number of bytes
+ */
+int print_Hexa(char c, va_list v)
+{
+	int i = 0, b;
+	unsigned long int n, a, num;
+	char *s;
+
+	if (c == 'l')
+		n = va_arg(v, unsigned long int);
+	else if (c == 'h')
+		n = (unsigned short)va_arg(v, int);
+	else
+		n = va_arg(v, unsigned int);
+	if (n == 0)
+		return (_putchar('0'));
+	num = n;
+	while (num)
+	{
+		i++;
+		num = num / 16;
+	}
+	s = malloc(i);
+	if (s == NULL)
+		return (0);
+	b = i - 1;
+	while (b >= 0)
+	{
+		a = n % 16;
+		if (a >= 10 && a < 16)
+		{
+			a = a % 10;
+			s[b] = 'A' + a;
 		}
 		else
 			s[b] = '0' + (n % 16);
