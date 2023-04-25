@@ -31,8 +31,6 @@ int fun(va_list v, char c)
 	}
 	return (x);
 }
-
-
 /**
  *  _printf - produces output according to a format
  *  @format: is a character string
