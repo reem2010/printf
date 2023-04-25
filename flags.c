@@ -7,6 +7,7 @@
  * space - print space
  * @format: string
  * @v: argument
+ * @i: index
  * Return: number of character
  */
 int space(const char *format, int i, va_list v)
@@ -22,6 +23,7 @@ int space(const char *format, int i, va_list v)
 /**
  * hash - print hash
  * @format: string
+ * @i: index
  * @v: argument
  * Return: number of character
  */
@@ -39,7 +41,7 @@ int hash(const char *format, int i, va_list v)
 		if (format[i] == 'x')
 			x = x + _putchar('x');
 		if (format[i] == 'X')
-			 x = x + _putchar('X');
+			x = x + _putchar('X');
 		if (format[i] == 'b')
 			x = x + _putchar('b');
 	}
@@ -50,6 +52,7 @@ int hash(const char *format, int i, va_list v)
 /**
  * plus - print plus
  * @format: string
+ * @i: index
  * @v: argument
  * Return: number of character
  */
@@ -68,12 +71,13 @@ int plus(const char *format, int i, va_list v)
  * flag - select the flag
  * @format: string
  * @i: index
+ * @v: argument
  * Return: number of character
  */
 int flag(const char *format, int i, va_list v)
 {
 	int x = -1, s = 0, p = 0, h = 0;
-	
+
 	while (format[i])
 	{
 		if (!(format[i] == ' ' || format[i] == '#' || format[i] == '+'))
@@ -86,7 +90,7 @@ int flag(const char *format, int i, va_list v)
 			p = 1;
 		i++;
 	}
-	if ( s == 1 && (h == 1 || p == 1))
+	if (s == 1 && (h == 1 || p == 1))
 		s = 0;
 	if (h == 1)
 		x = hash(format, i, v);

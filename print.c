@@ -5,8 +5,9 @@
 #include <unistd.h>
 /**
  * fun - get the function
- * @c: character to compare with
+ * @format: character to compare with
  * @v: argument
+ * @k: index
  * Return: 1 if it is founded
  */
 int fun(va_list v, const char *format, int k)
@@ -18,7 +19,7 @@ int fun(va_list v, const char *format, int k)
 	};
 	int i = 0, j = 0, x = -1;
 	char c;
-	
+
 	c = format[k];
 	while ((j < 8) && c)
 	{
@@ -53,6 +54,8 @@ int _printf(const char *format, ...)
 		{
 			i++;
 			if (!format[i])
+				return (-1);
+			if (format[i] == ' ' && !format[i + 1])
 				return (-1);
 			x = fun(data, format, i);
 			while (format[i] == ' ' || format[i] == '#' || format[i] == '+')
