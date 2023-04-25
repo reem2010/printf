@@ -29,7 +29,7 @@ int print_int(char c, va_list v)
 		else
 			n = n * -1;
 	}
-	else if (n > 0 && c == '+')
+	else if (n >= 0 && c == '+')
 		i = i +  _putchar('+');
 	if (n < 10 && c == '+')
 		return (i = i + _putchar(n + '0'));

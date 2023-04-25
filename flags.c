@@ -13,11 +13,19 @@
 int space(const char *format, int i, va_list v)
 {
 	int x = 0;
+	va_list copy;
+	int num;
 	char c = format[i];
 
+	va_copy(copy, v);
 	if (c == 'd' || c == 'i')
-		x = _putchar(' ');
+	{
+		num = va_arg(copy, int);
+		if (num >= 0)
+			x = _putchar(' ');
+	}
 	x = x + fun(v, format, i);
+	va_end(copy);
 	return (x);
 }
 /**
