@@ -6,21 +6,94 @@
 /**
  * space - print space
  * @format: string
+ * @v: argument
+ * Return: number of character
+ */
+int space(const char *format, int i, va_list v)
+{
+	int x = 0;
+	char c = format[i];
+
+	if (c == 'd' || c == 'i')
+		x = _putchar(' ');
+	x = x + fun(v, format, i);
+	return (x);
+}
+/**
+ * hash - print hash
+ * @format: string
+ * @v: argument
+ * Return: number of character
+ */
+int hash(const char *format, int i, va_list v)
+{
+	int x = 0;
+	va_list copy;
+	unsigned int num;
+
+	va_copy(copy, v);
+	num = va_arg(copy, unsigned int);
+	if (num != 0)
+	{
+		x = x + _putchar('0');
+		if (format[i] == 'x')
+			x = x + _putchar('x');
+		if (format[i] == 'X')
+			 x = x + _putchar('X');
+		if (format[i] == 'b')
+			x = x + _putchar('b');
+	}
+	x = x + fun(v, format, i);
+	va_end(copy);
+	return (x);
+}
+/**
+ * plus - print plus
+ * @format: string
+ * @v: argument
+ * Return: number of character
+ */
+int plus(const char *format, int i, va_list v)
+{
+	int x = 0;
+	(void)format;
+	(void)i;
+
+	x = print_int('+', v);
+	return (x);
+}
+
+
+/**
+ * flag - select the flag
+ * @format: string
  * @i: index
  * Return: number of character
  */
-int space(const char *format, int i)
+int flag(const char *format, int i, va_list v)
 {
-	int s = 0, x = 0;
-
-	while (format[i] && (format[i] == ' ' || format[i] == '#'))
+	int x = -1, s = 0, p = 0, h = 0;
+	
+	while (format[i])
 	{
+		if (!(format[i] == ' ' || format[i] == '#' || format[i] == '+'))
+			break;
 		if (format[i] == ' ')
 			s = 1;
+		if (format[i] == '#')
+			h = 1;
+		if (format[i] == '+')
+			p = 1;
 		i++;
 	}
+	if ( s == 1 && (h == 1 || p == 1))
+		s = 0;
+	if (h == 1)
+		x = hash(format, i, v);
+	if (p == 1)
+		x = plus(format, i, v);
 	if (s == 1)
-		x = _putchar(' ');
+		x = space(format, i, v);
 	return (x);
 }
 

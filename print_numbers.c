@@ -15,7 +15,6 @@
 int print_int(char c, va_list v)
 {
 	int i = 0, n, num, decimal = 1, a = 0;
-	(void)c;
 
 	n = va_arg(v, int);
 	if (n < 0)
@@ -30,7 +29,9 @@ int print_int(char c, va_list v)
 		else
 			n = n * -1;
 	}
-	if (n < 10)
+	else if (n > 0 && c == '+')
+		i = i +  _putchar('+');
+	if (n < 10 && c == '+')
 		return (i = i + _putchar(n + '0'));
 	num = n;
 	while (num > 9)

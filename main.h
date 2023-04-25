@@ -15,7 +15,7 @@ typedef struct specifiers
 } spec;
 int _printf(const char *format, ...);
 int istring(char, va_list v);
-int fun(va_list, char);
+int fun(va_list, const char*, int);
 int _putchar(char c);
 int print_int(char c, va_list v);
 int binary(char c, va_list v);
@@ -25,5 +25,8 @@ int print_hexa(char c, va_list v);
 void hexa(char c);
 int print_string(char c, va_list v);
 int print_P(char c, va_list v);
-int space(const char *format, int i);
+int flag(const char *format, int i, va_list v);
+int space(const char *format, int i, va_list v);
+int hash(const char *format, int i, va_list v);
+int plus(const char *format, int i, va_list v);
 #endif

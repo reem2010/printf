@@ -9,7 +9,7 @@
  * @v: argument
  * Return: 1 if it is founded
  */
-int fun(va_list v, char c)
+int fun(va_list v, const char *format, int k)
 {
 	spec sp[] = {
 		{"sc%", 1, istring}, {"di", 1, print_int}, {"b", 1, binary},
@@ -17,7 +17,9 @@ int fun(va_list v, char c)
 		{"xX", 1, print_hexa}, {"p", 1, print_P}
 	};
 	int i = 0, j = 0, x = -1;
-
+	char c;
+	
+	c = format[k];
 	while ((j < 8) && c)
 	{
 		i = 0;
@@ -29,6 +31,8 @@ int fun(va_list v, char c)
 		}
 		j++;
 	}
+	if (x == -1)
+		x = flag(format, k, v);
 	return (x);
 }
 /**
@@ -50,9 +54,11 @@ int _printf(const char *format, ...)
 			i++;
 			if (!format[i])
 				return (-1);
-			x = fun(data, format[i]);
+			x = fun(data, format, i);
+			while (format[i] == ' ' || format[i] == '#' || format[i] == '+')
+				i++;
 			if (x == -1)
-				x = write(1, &format[i - 1], 1);
+				x = _putchar('%');
 			else
 				i++;
 		}
