@@ -33,4 +33,5 @@ int print_l(const char *format, int i, va_list v);
 int print_Hexa(char c, va_list v);
 long int get_number(char c, va_list v);
 long int get_min(char c);
+int rot(char c, va_list v);
 #endif

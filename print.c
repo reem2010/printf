@@ -15,13 +15,14 @@ int fun(va_list v, const char *format, int k)
 	spec sp[] = {
 		{"sc%", 1, istring}, {"di", 1, print_int}, {"b", 1, binary},
 		{"u", 1, print_unsign}, {"o", 1, print_oct}, {"S", 1, print_string},
-		{"x", 1, print_hexa}, {"p", 1, print_P}, {"X", 1, print_Hexa}
+		{"x", 1, print_hexa}, {"p", 1, print_P}, {"X", 1, print_Hexa},
+		{"R", 1, rot}
 	};
 	int i = 0, j = 0, x = -1;
 	char c;
 
 	c = format[k];
-	while ((j < 9) && c)
+	while ((j < 10) && c)
 	{
 		i = 0;
 		while ((sp[j].c)[i])
