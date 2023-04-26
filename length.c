@@ -12,9 +12,9 @@
  */
 int print_l(const char *format, int i, va_list v)
 {
-	int x = 0;
+	int x = -1;
 
-	if (format[i + 1])
+	if (format[i + 1] && (format[i] == 'l' || format[i] == 'h'))
 	{
 		if (format[i + 1] == 'd')
 			x = print_int(format[i], v);
