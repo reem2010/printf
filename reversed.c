@@ -32,12 +32,15 @@ int print_rev(char c, va_list v)
 			i++;
 		}
 		p = malloc(len);
-		for (i = 0; i < len; i++)
+		if (p != NULL)
 		{
+			for (i = 0; i < len; i++)
+			{
 
-			p[i] = s[len - 1 - i];
+				p[i] = s[len - 1 - i];
+			}
+			write(1, p, len);
 		}
-		write(1, p, len);
 	}
 	free(p);
 	return (len);
